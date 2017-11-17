@@ -67,7 +67,7 @@ uploadArchives {
 
         pom.project {
             groupId = ARTIFACT_PACKAGE
-            version = ARTIFACT_VERSION
+            version = (System.getenv().containsKey("ARTIFACT_VERSION") ? System.getenv("ARTIFACT_VERSION") : "LOCAL")
             artifactId = ARTIFACT_NAME
             packaging ARTIFACT_PACKAGING
         }
@@ -87,8 +87,8 @@ def urlExists(String repositoryUrl) {
         def responseCode = connection.getResponseCode()
         println("responseCode: " + responseCode)
 
-	      if (responseCode == 401) {
-          throw new RuntimeException("Unauthorized BitBucket user - please provide valid username and password in gradle.properties file")
+        if (responseCode == 401) {
+            throw new RuntimeException("Unauthorized BitBucket user - please provide valid username and password in gradle.properties file")
         }
 
         return (200 == responseCode)
