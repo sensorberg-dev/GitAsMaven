@@ -67,7 +67,7 @@ uploadArchives {
 
         pom.project {
             groupId = ARTIFACT_PACKAGE
-            version = (System.getenv().containsKey("ARTIFACT_VERSION") ? System.getenv("ARTIFACT_VERSION") : "LOCAL")
+            version = (System.getenv().containsKey("ARTIFACT_VERSION") ? System.getenv("ARTIFACT_VERSION") : ARTIFACT_VERSION)
             artifactId = ARTIFACT_NAME
             packaging ARTIFACT_PACKAGING
         }
