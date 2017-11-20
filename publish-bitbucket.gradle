@@ -98,6 +98,8 @@ def urlExists(String repositoryUrl) {
 }
 
 def getBase64EncodedCredentials() {
-    def s = USERNAME + ":" + PASSWORD;
+    def user = (System.getenv().containsKey("USERNAME") ? System.getenv("USERNAME") : USERNAME)
+    def pass = (System.getenv().containsKey("PASSWORD") ? System.getenv("PASSWORD") : PASSWORD)
+    def s = user + ":" + pass;
     return s.bytes.encodeBase64().toString()
 }
