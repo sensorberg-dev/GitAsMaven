@@ -55,7 +55,7 @@ task lookForArtifacts {
     }
 }
 
-// uploadArchives.dependsOn lookForArtifacts
+uploadArchives.dependsOn lookForArtifacts
 
 uploadArchives {
 
